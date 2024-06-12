@@ -10,17 +10,14 @@ import retrofit2.http.Path
 
 interface ApiService {
     @POST("api/register")
-    suspend fun register(@Body user: User): Response<Void>
+    suspend fun register(@Body user: User): Response<Unit>
 
     @POST("api/login")
-    suspend fun login(@Body user: User): Response<Void>
+    suspend fun login(@Body user: User): Response<Unit>
 
-    @GET("api/inspections")
-    suspend fun getInspections(): Response<List<Inspection>>
-
-    @GET("api/inspections/{id}")
-    suspend fun getInspection(@Path("id") id: Int): Response<Inspection>
+    @GET("api/inspections/start")
+    suspend fun startInspection(): Response<Inspection>
 
     @POST("api/inspections/submit")
-    suspend fun submitInspection(@Body inspection: Inspection): Response<Void>
+    suspend fun submitInspection(@Body inspection: Inspection): Response<Unit>
 }

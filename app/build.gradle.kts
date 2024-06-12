@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.hilt)
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    alias(libs.plugins.compose.compiler)
 }
 
 
@@ -43,7 +44,12 @@ android {
     dataBinding {
         enable = true
     }
+    buildFeatures {
+        compose = true
+    }
 }
+
+
 
 dependencies {
 
@@ -52,9 +58,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.material3.android)
     implementation(libs.googleHilt)
     kapt(libs.hilt.android.compiler)
     implementation(libs.retrofit)
@@ -66,4 +71,28 @@ dependencies {
     kapt(libs.androidx.room.compiler)
     implementation(libs.glide)
     implementation(libs.interceptor)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.compose.activity)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation(libs.kotlin.coroutines.core)
+    implementation(libs.kotlin.coroutines.android)
+
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.archCore.testing)
+
+    androidTestImplementation(libs.testing.core)
+    androidTestImplementation(libs.testing.junit)
+    androidTestImplementation(libs.testing.espresso)
+
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:${libs.versions.coroutines}")
+
 }

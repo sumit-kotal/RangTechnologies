@@ -4,4 +4,5 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android) apply false
     alias(libs.plugins.hilt) apply false
     kotlin("kapt") version "1.9.23"
+    alias(libs.plugins.compose.compiler) apply false
 }
